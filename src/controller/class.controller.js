@@ -18,6 +18,15 @@ const getClassById = async (req, res) => {
   }
 };
 
+const getClassByTeacherId = async (req, res) => {
+  try {
+    const classes = await Class.find({ teacherId: req.params.teacherId });
+    res.status(200).json(classes);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 const postClass = async (req, res) => {
   const classes = new Class({
     classId: req.body.classId,
@@ -37,5 +46,6 @@ const postClass = async (req, res) => {
 module.exports = {
   getAllClass,
   getClassById,
+  getClassByTeacherId,
   postClass
 };
