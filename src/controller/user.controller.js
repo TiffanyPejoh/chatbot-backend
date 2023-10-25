@@ -22,8 +22,8 @@ const getUserById = async (req, res) => {
 const postUser = async (req, res) => {
   const user = new User({
     userId: req.body.userId,
-    name: req.body.name,
     role: req.body.role,
+    name: req.body.name,
     phone: req.body.phone
   });
   try {

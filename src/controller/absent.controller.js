@@ -43,7 +43,8 @@ const postAbsent = async (req, res) => {
   const absent = new Absent({
     userId: req.body.userId,
     classId: req.body.classId,
-    absent: req.body.absent
+    absent: req.body.absent,
+    date: req.body.date
   });
   try {
     const newAbsent = await absent.save();
