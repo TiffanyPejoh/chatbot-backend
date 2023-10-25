@@ -32,7 +32,8 @@ const postClass = async (req, res) => {
     classId: req.body.classId,
     className: req.body.className,
     teacherId: req.body.teacherId,
-    students: req.body.students
+    students: req.body.students,
+    credits: req.body.credits
   });
   try {
     const newClass = await classes.save();
@@ -43,9 +44,21 @@ const postClass = async (req, res) => {
   }
 };
 
+const deleteClass = async (req, res) => {
+  try {
+    const classes = await Class.findOneAndDelete({
+      classId: req.params.classId
+    });
+    res.status(200).json(classes);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
   getAllClass,
   getClassById,
   getClassByTeacherId,
-  postClass
+  postClass,
+  deleteClass
 };

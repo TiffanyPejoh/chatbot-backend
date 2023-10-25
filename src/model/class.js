@@ -5,7 +5,8 @@ const ClassSchema = new mongoose.Schema(
     classId: { type: String, required: true, unique: true }, // 'CS301'
     className: { type: String, required: true }, // 'CS301'
     teacherId: { type: String, required: true }, // teacherId
-    students: { type: Array, required: true } // array of studentId
+    students: { type: Array, required: true }, // array of studentId
+    credits: { type: Number, required: true } // 3
   },
   { collection: 'class' }
 );

@@ -55,10 +55,22 @@ const postAbsent = async (req, res) => {
   }
 };
 
+const deleteAbsent = async (req, res) => {
+  try {
+    const absent = await Absent.findOneAndDelete({
+      absentId: req.params.absentId
+    });
+    res.status(200).json(absent);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
   getAllAbsent,
   getAbsentByUserId,
   getAbsentByClassId,
   getAbsentByClassIdAndUserId,
-  postAbsent
+  postAbsent,
+  deleteAbsent
 };

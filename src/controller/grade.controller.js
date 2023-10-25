@@ -1,6 +1,6 @@
 const Grade = require('../model/grade');
 
-getAllGrades = async (req, res) => {
+const getAllGrades = async (req, res) => {
   try {
     const grades = await Grade.find();
     res.status(200).json(grades);
@@ -10,7 +10,7 @@ getAllGrades = async (req, res) => {
 };
 
 // get all grade by userId
-getGradeByUserId = async (req, res) => {
+const getGradeByUserId = async (req, res) => {
   try {
     const grade = await Grade.find({ userId: req.params.userId });
     res.status(200).json(grade);
@@ -20,7 +20,7 @@ getGradeByUserId = async (req, res) => {
 };
 
 // get all grade by classId
-getGradeByClassId = async (req, res) => {
+const getGradeByClassId = async (req, res) => {
   try {
     const grade = await Grade.find({ classId: req.params.classId });
     res.status(200).json(grade);
@@ -30,7 +30,7 @@ getGradeByClassId = async (req, res) => {
 };
 
 // get grade by classId and userId
-getGradeByClassIdAndUserId = async (req, res) => {
+const getGradeByClassIdAndUserId = async (req, res) => {
   try {
     const grade = await Grade.findOne({
       classId: req.params.classId,
@@ -42,7 +42,7 @@ getGradeByClassIdAndUserId = async (req, res) => {
   }
 };
 
-postGrade = async (req, res) => {
+const postGrade = async (req, res) => {
   const grade = new Grade({
     userId: req.body.userId,
     classId: req.body.classId,
@@ -57,10 +57,22 @@ postGrade = async (req, res) => {
   }
 };
 
+const deleteGrade = async (req, res) => {
+  try {
+    const grade = await Grade.findOneAndDelete({
+      gradeId: req.params.gradeId
+    });
+    res.status(200).json(grade);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
   getAllGrades,
   getGradeByUserId,
   getGradeByClassId,
   getGradeByClassIdAndUserId,
-  postGrade
+  postGrade,
+  deleteGrade
 };

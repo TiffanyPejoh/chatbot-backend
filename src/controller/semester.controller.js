@@ -54,10 +54,26 @@ const postSemester = async (req, res) => {
   }
 };
 
+const deleteSemester = async (req, res) => {
+  try {
+    const semester = await Semester.findOneAndDelete({
+      semesterId: req.params.semesterId
+    });
+    if (!semester) {
+      res.status(404).json({ message: 'Semester not found' });
+    } else {
+      res.status(200).json({ message: 'Semester deleted' });
+    }
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
   getAllSemesters,
   getSemesterById,
   getSemesterByUserId,
   getSemesterByClassId,
-  postSemester
+  postSemester,
+  deleteSemester
 };

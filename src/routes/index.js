@@ -4,6 +4,7 @@ const classRoute = require('./class.route');
 const absentRoute = require('./absent.route');
 const gradesRoute = require('./grade.route');
 const semesterRoute = require('./semester.route');
+const functionRoute = require('./function.route');
 
 const router = express.Router();
 
@@ -27,6 +28,10 @@ const defaultRoutes = [
   {
     path: '/semesters',
     route: semesterRoute
+  },
+  {
+    path: '/functions',
+    route: functionRoute
   }
 ];
 

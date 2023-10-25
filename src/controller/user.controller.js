@@ -59,9 +59,19 @@ const verifyUser = async (req, res) => {
   }
 };
 
+const deleteUser = async (req, res) => {
+  try {
+    await User.deleteOne({ userId: req.params.userId });
+    res.status(200).json({ message: 'User deleted' });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
   getAllUsers,
   getUserById,
   verifyUser,
-  postUser
+  postUser,
+  deleteUser
 };
