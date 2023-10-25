@@ -16,7 +16,7 @@ app.use(cors());
 
 mongoose
   .connect(
-    `mongodb+srv://s2200449:U5Ixhb0I6ooo3lZB@chatbot-backend.jt82y7r.mongodb.net/?retryWrites=true&w=majority`,
+    `mongodb+srv://twisttymist:sRFQogdIX1g6qmEd@chatbot.8nbdgga.mongodb.net/?retryWrites=true&w=majority`,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true
